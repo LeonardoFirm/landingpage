@@ -1,0 +1,105 @@
+// -------------------------------------------------------------
+// Back to top
+#backtotop {
+    position: fixed;
+    bottom: 130px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: $purple-light;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(100px);
+    overflow: visible;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+#backtotop img {
+    width: 60px;
+    height: 60px;
+    fill: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleX(-1) rotate(-20deg);
+    animation: float 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) scaleX(-1) rotate(-5deg);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateY(-10px) scaleX(-1) rotate(-5deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translateY(0) scaleX(-1) rotate(-5deg);
+    }
+}
+
+#backtotop::after,
+#backtotop::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+#backtotop::after {
+    animation: smokeAnimation 1.5s infinite;
+    width: 25px;
+    height: 25px;
+    bottom: -30px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#backtotop::before {
+    animation: smokeAnimation 2s infinite;
+    width: 35px;
+    height: 35px;
+    bottom: -40px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes smokeAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scaleX(1) scaleY(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translateY(-15px) scaleX(1.5) scaleY(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scaleX(2) scaleY(2);
+    }
+}
+
+#backtotop.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#backtotop:hover {
+    background-color: $purple-navy;
+}
